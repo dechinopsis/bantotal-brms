@@ -21,7 +21,5 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Run unit tests
-        run: mvn test --file pom.xml
       - name: Build with Maven
         run: mvn -B package --file pom.xml
