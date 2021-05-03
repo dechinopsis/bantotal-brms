@@ -2,7 +2,7 @@ package com.dlya.btbrms.flow.schema;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public enum BtAssignmentType {
+public enum BtEAssignmentEntryType {
     @JsonProperty("constant")
     CONSTANT,
     @JsonProperty("variable")

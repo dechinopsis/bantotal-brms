@@ -12,7 +12,5 @@ public class BtStep {
     @JsonProperty("description")
     private String description;
     @JsonProperty("meta")
-    private BtMetadataTypeAssignment metadata;
-    @JsonProperty("type")
-    private BtStepType stepType;
+    private BtBaseMetadataType metadata;
 }

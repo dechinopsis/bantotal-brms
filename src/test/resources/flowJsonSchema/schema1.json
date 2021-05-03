@@ -8,8 +8,8 @@
       "key": "assignment1",
       "label": "Assignment 1",
       "description": "Assignment Description 1",
-      "type": "assignment",
       "meta": {
+        "type": "assignment",
         "assignments": [
           {
             "variable": "var1",

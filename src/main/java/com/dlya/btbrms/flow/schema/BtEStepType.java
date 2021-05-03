@@ -2,7 +2,7 @@ package com.dlya.btbrms.flow.schema;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public enum BtStepType {
+public enum BtEStepType {
     @JsonProperty("start")
     START,
     @JsonProperty("gxCall")
