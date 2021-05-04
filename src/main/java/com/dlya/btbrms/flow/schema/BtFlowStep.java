@@ -6,9 +6,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = BtAssignmentMetadataType.class, name = "assignment")
+        @JsonSubTypes.Type(value = BtFlowStepStart.class, name = "start"),
+        @JsonSubTypes.Type(value = BtFlowStepAssignment.class, name = "assignment")
 })
-public abstract class BtBaseMetadataType {
+public abstract class BtFlowStep {
+    @JsonProperty("apiName")
+    private String apiName;
     @JsonProperty("type")
-    private BtEStepType stepType;
+    private BtEStepType type;
 }

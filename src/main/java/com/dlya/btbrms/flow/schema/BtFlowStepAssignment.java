@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class BtAssignmentMetadataType extends BtBaseMetadataType {
+public class BtFlowStepAssignment extends BtFlowStepSequential {
     @JsonProperty("assignments")
-    private List<BtAssignmentEntry> assignmentsList;
+    private List<BtAssignmentEntry> assignments;
 }

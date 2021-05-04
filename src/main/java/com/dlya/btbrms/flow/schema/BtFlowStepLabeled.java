@@ -2,15 +2,9 @@ package com.dlya.btbrms.flow.schema;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class BtStep {
-    @JsonProperty("next")
-    private String nextStep;
-    @JsonProperty("key")
-    private String apiName;
+public abstract class BtFlowStepLabeled extends BtFlowStep {
     @JsonProperty("label")
     private String label;
     @JsonProperty("description")
     private String description;
-    @JsonProperty("meta")
-    private BtBaseMetadataType metadata;
 }

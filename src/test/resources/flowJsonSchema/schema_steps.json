@@ -1,0 +1,35 @@
+{
+  "flowSteps": {
+    "start": {
+      "apiName": "start",
+      "type": "start",
+      "startAt": "assignment1"
+    },
+    "assignment1": {
+      "apiName": "assignment1",
+      "label": "Assignment 1",
+      "description": "Assignment Description 1",
+      "type": "assignment",
+      "next": "gxCall1",
+      "assignments": [
+        {
+          "variable": "var1",
+          "type": "constant",
+          "value": "10"
+        },
+        {
+          "variable": "var2",
+          "type": "variable",
+          "value": "var3"
+        },
+        {
+          "variable": "var4",
+          "type": "expression",
+          "value": "LEN(${var5})"
+        }
+      ]
+    }
+  },
+  "flowResources": [
+  ]
+}
