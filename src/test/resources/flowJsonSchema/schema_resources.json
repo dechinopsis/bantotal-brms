@@ -1,0 +1,24 @@
+{
+  "flowSteps": {
+  },
+  "flowResources": [
+    {
+      "apiName": "constant1",
+      "label": "Constant",
+      "description": "Description of constant",
+      "resourceType": "const",
+      "dataType": "number"
+    },
+    {
+      "apiName": "var1",
+      "label": "variable1",
+      "description": "Description of variable",
+      "resourceType": "var",
+      "dataType": "text",
+      "isCollection": false,
+      "in": false,
+      "out": true,
+      "hasDefault": false
+    }
+  ]
+}
