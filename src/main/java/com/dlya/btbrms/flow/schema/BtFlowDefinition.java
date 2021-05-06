@@ -1,5 +1,7 @@
 package com.dlya.btbrms.flow.schema;
 
+import com.dlya.btbrms.flow.schema.resouce.BtFlowResource;
+import com.dlya.btbrms.flow.schema.step.BtFlowStep;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;

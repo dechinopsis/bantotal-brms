@@ -2,6 +2,17 @@ package com.dlya.btbrms.flow.schema;
 
 import com.adelean.inject.resources.junit.jupiter.GivenJsonResource;
 import com.adelean.inject.resources.junit.jupiter.TestWithResources;
+import com.dlya.btbrms.flow.schema.assign.BtAssignEntry;
+import com.dlya.btbrms.flow.schema.assign.BtAssignExpression;
+import com.dlya.btbrms.flow.schema.assign.BtAssignResource;
+import com.dlya.btbrms.flow.schema.assign.BtAssignScalarConst;
+import com.dlya.btbrms.flow.schema.enums.*;
+import com.dlya.btbrms.flow.schema.resouce.BtFlowResource;
+import com.dlya.btbrms.flow.schema.resouce.BtFlowResourceConstant;
+import com.dlya.btbrms.flow.schema.resouce.BtFlowResourceVariableScalar;
+import com.dlya.btbrms.flow.schema.step.BtFlowStep;
+import com.dlya.btbrms.flow.schema.step.BtFlowStepAssignment;
+import com.dlya.btbrms.flow.schema.step.BtFlowStepStart;
 import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,7 +42,7 @@ public class BtFlowParsingTest {
                         .asInstanceOf(InstanceOfAssertFactories.type(BtFlowStepStart.class))
                         .hasFieldOrPropertyWithValue("apiName", "start")
                         .hasFieldOrPropertyWithValue("startAt", "assignment1")
-                        .hasFieldOrPropertyWithValue("type", BtEStepType.START)
+                        .hasFieldOrPropertyWithValue("type", BtEFlowStepType.START)
                 );
     }
 
@@ -48,31 +59,53 @@ public class BtFlowParsingTest {
                         .hasFieldOrPropertyWithValue("label", "Assignment 1")
                         .hasFieldOrPropertyWithValue("next", "gxCall1")
                         .hasFieldOrPropertyWithValue("description", "Assignment Description 1")
-                        .hasFieldOrPropertyWithValue("type", BtEStepType.ASSIGNMENT)
-                        .extracting("assignments", as(list(BtAssignmentEntry.class)))
+                        .hasFieldOrPropertyWithValue("type", BtEFlowStepType.ASSIGNMENT)
+                        .extracting("assignments", as(list(BtAssignEntry.class)))
                         .hasSize(3)
-                        .extracting(BtAssignmentEntry::getVariableApiName)
-                        .containsExactly("var1", "var2", "var4")
-                );
-
-        assertThat(schemaSteps)
-                .extracting("flowSteps", as(map(String.class, BtFlowStep.class)))
-                .hasEntrySatisfying("assignment1", start -> assertThat(start)
-                        .extracting("assignments", as(list(BtAssignmentEntry.class)))
-                        .extracting(BtAssignmentEntry::getAssignmentType)
-                        .containsExactly(
-                                BtEAssignmentEntryType.CONSTANT,
-                                BtEAssignmentEntryType.VARIABLE,
-                                BtEAssignmentEntryType.EXPRESSION
+                        .satisfies( array -> assertThat(array)
+                            .element(0)
+                            .asInstanceOf(InstanceOfAssertFactories.type(BtAssignEntry.class))
+                            .satisfies( target -> assertThat(target)
+                                    .extracting("target", as(type(BtAssignResource.class)))
+                                    .hasFieldOrPropertyWithValue("apiName", "var1")
+                                    .hasFieldOrPropertyWithValue("resourceType", BtEAssignResourceType.VARIABLE_CONSTANT)
+                            )
+                            .satisfies( source -> assertThat(source)
+                                    .extracting("source", as(type(BtAssignScalarConst.class)))
+                                    .hasFieldOrPropertyWithValue("assignType", BtEAssignType.CONSTANT)
+                                    .hasFieldOrPropertyWithValue("value", "10")
+                            )
+                        )
+                        .satisfies( array -> assertThat(array)
+                                .element(1)
+                                .asInstanceOf(InstanceOfAssertFactories.type(BtAssignEntry.class))
+                                .satisfies( target -> assertThat(target)
+                                        .extracting("target", as(type(BtAssignResource.class)))
+                                        .hasFieldOrPropertyWithValue("apiName", "var2")
+                                        .hasFieldOrPropertyWithValue("resourceType", BtEAssignResourceType.VARIABLE_CONSTANT)
+                                )
+                                .satisfies( source -> assertThat(source)
+                                        .extracting("source", as(type(BtAssignResource.class)))
+                                        .hasFieldOrPropertyWithValue("assignType", BtEAssignType.RESOURCE)
+                                        .hasFieldOrPropertyWithValue("apiName", "var3")
+                                )
+                        )
+                        .satisfies( array -> assertThat(array)
+                                .element(2)
+                                .asInstanceOf(InstanceOfAssertFactories.type(BtAssignEntry.class))
+                                .satisfies( target -> assertThat(target)
+                                        .extracting("target", as(type(BtAssignResource.class)))
+                                        .hasFieldOrPropertyWithValue("apiName", "var4")
+                                        .hasFieldOrPropertyWithValue("resourceType", BtEAssignResourceType.VARIABLE_CONSTANT)
+                                )
+                                .satisfies( source -> assertThat(source)
+                                        .extracting("source", as(type(BtAssignExpression.class)))
+                                        .hasFieldOrPropertyWithValue("assignType", BtEAssignType.EXPRESSION)
+                                        .hasFieldOrPropertyWithValue("expression", "LEN(${var5})")
+                                )
                         )
                 );
-        assertThat(schemaSteps)
-                .extracting("flowSteps", as(map(String.class, BtFlowStep.class)))
-                .hasEntrySatisfying("assignment1", start -> assertThat(start)
-                        .extracting("assignments", as(list(BtAssignmentEntry.class)))
-                        .extracting(BtAssignmentEntry::getValue)
-                        .containsExactly("10", "var3", "LEN(${var5})")
-                );
+
     }
 
     @Test
@@ -85,11 +118,16 @@ public class BtFlowParsingTest {
                 .hasSize(2)
                 .element(0)
                 .asInstanceOf(InstanceOfAssertFactories.type(BtFlowResourceConstant.class))
-                .hasFieldOrPropertyWithValue("apiName", "constant1")
-                .hasFieldOrPropertyWithValue("label", "Constant")
-                .hasFieldOrPropertyWithValue("description", "Description of constant")
+                .hasFieldOrPropertyWithValue("apiName", "two")
+                .hasFieldOrPropertyWithValue("label", "Two")
+                .hasFieldOrPropertyWithValue("description", "Two 2")
                 .hasFieldOrPropertyWithValue("resourceType", BtEFlowResourceType.CONSTANT)
-                .hasFieldOrPropertyWithValue("dataType", BtEScalarPrimitiveType.NUMBER);
+                .hasFieldOrPropertyWithValue("dataType", BtEScalarPrimitiveType.NUMBER)
+                .satisfies( value -> assertThat(value)
+                        .extracting("value", as(type(BtAssignScalarConst.class)))
+                        .hasFieldOrPropertyWithValue("assignType", BtEAssignType.CONSTANT)
+                        .hasFieldOrPropertyWithValue("value", "2")
+                );
 
         assertThat(schemaResources)
                 .extracting("flowResources", as(list(BtFlowResource.class)))

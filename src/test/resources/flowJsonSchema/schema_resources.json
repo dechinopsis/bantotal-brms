@@ -3,11 +3,15 @@
   },
   "flowResources": [
     {
-      "apiName": "constant1",
-      "label": "Constant",
-      "description": "Description of constant",
+      "apiName": "two",
+      "label": "Two",
+      "description": "Two 2",
       "resourceType": "const",
-      "dataType": "number"
+      "dataType": "number",
+      "value": {
+        "assignType": "const",
+        "value": "2"
+      }
     },
     {
       "apiName": "var1",

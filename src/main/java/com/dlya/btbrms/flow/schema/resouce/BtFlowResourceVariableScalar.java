@@ -1,5 +1,6 @@
-package com.dlya.btbrms.flow.schema;
+package com.dlya.btbrms.flow.schema.resouce;
 
+import com.dlya.btbrms.flow.schema.assign.BtAssign;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BtFlowResourceVariableScalar extends BtFlowResourceVariable {
@@ -9,5 +10,6 @@ public class BtFlowResourceVariableScalar extends BtFlowResourceVariable {
     private Boolean out;
     @JsonProperty("hasDefault")
     private Boolean hasDefault;
-    //TODO: define assignment
+    @JsonProperty("defaultValue")
+    private BtAssign value;
 }

@@ -13,19 +13,35 @@
       "next": "gxCall1",
       "assignments": [
         {
-          "variable": "var1",
-          "type": "constant",
-          "value": "10"
+          "target": {
+            "apiName": "var1",
+            "resourceType": "var"
+          },
+          "source": {
+            "assignType": "const",
+            "value": "10"
+          }
         },
         {
-          "variable": "var2",
-          "type": "variable",
-          "value": "var3"
+          "target": {
+            "apiName": "var2",
+            "resourceType": "var"
+          },
+          "source": {
+            "assignType": "resource",
+            "resourceType": "var",
+            "apiName": "var3"
+          }
         },
         {
-          "variable": "var4",
-          "type": "expression",
-          "value": "LEN(${var5})"
+          "target": {
+            "apiName": "var4",
+            "resourceType": "var"
+          },
+          "source": {
+            "assignType": "expression",
+            "expression": "LEN(${var5})"
+          }
         }
       ]
     }
