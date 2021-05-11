@@ -1,6 +1,6 @@
 package com.dlya.btbrms.flow.schema.resouce;
 
-import com.dlya.btbrms.flow.schema.enums.BtEFlowResourceType;
+import com.dlya.btbrms.flow.schema.types.BtEFlowResourceType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

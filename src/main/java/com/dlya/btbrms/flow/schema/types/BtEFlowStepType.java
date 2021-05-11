@@ -1,4 +1,4 @@
-package com.dlya.btbrms.flow.schema.enums;
+package com.dlya.btbrms.flow.schema.types;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

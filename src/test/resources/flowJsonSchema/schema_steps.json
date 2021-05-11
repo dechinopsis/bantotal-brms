@@ -15,31 +15,30 @@
         {
           "target": {
             "apiName": "var1",
-            "resourceType": "var"
+            "type": "resource"
           },
           "source": {
-            "assignType": "const",
+            "type": "const",
             "value": "10"
           }
         },
         {
           "target": {
             "apiName": "var2",
-            "resourceType": "var"
+            "type": "resource"
           },
           "source": {
-            "assignType": "resource",
-            "resourceType": "var",
+            "type": "resource",
             "apiName": "var3"
           }
         },
         {
           "target": {
             "apiName": "var4",
-            "resourceType": "var"
+            "type": "resource"
           },
           "source": {
-            "assignType": "expression",
+            "type": "expression",
             "expression": "LEN(${var5})"
           }
         }

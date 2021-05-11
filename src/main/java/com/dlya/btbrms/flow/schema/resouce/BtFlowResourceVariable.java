@@ -1,6 +1,6 @@
 package com.dlya.btbrms.flow.schema.resouce;
 
-import com.dlya.btbrms.flow.schema.enums.BtEScalarPrimitiveType;
+import com.dlya.btbrms.flow.schema.types.BtEScalarPrimitiveType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BtFlowResourceVariable extends BtFlowResource {

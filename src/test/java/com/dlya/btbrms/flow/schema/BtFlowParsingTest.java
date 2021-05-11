@@ -4,15 +4,15 @@ import com.adelean.inject.resources.junit.jupiter.GivenJsonResource;
 import com.adelean.inject.resources.junit.jupiter.TestWithResources;
 import com.dlya.btbrms.flow.schema.assign.BtAssignEntry;
 import com.dlya.btbrms.flow.schema.assign.BtAssignExpression;
-import com.dlya.btbrms.flow.schema.assign.BtAssignResource;
-import com.dlya.btbrms.flow.schema.assign.BtAssignScalarConst;
-import com.dlya.btbrms.flow.schema.enums.*;
+import com.dlya.btbrms.flow.schema.reference.BtReferenceResource;
+import com.dlya.btbrms.flow.schema.reference.BtReferenceScalarConst;
+import com.dlya.btbrms.flow.schema.step.BtFlowStepAssignment;
+import com.dlya.btbrms.flow.schema.step.BtFlowStepStart;
+import com.dlya.btbrms.flow.schema.types.*;
 import com.dlya.btbrms.flow.schema.resouce.BtFlowResource;
 import com.dlya.btbrms.flow.schema.resouce.BtFlowResourceConstant;
 import com.dlya.btbrms.flow.schema.resouce.BtFlowResourceVariableScalar;
 import com.dlya.btbrms.flow.schema.step.BtFlowStep;
-import com.dlya.btbrms.flow.schema.step.BtFlowStepAssignment;
-import com.dlya.btbrms.flow.schema.step.BtFlowStepStart;
 import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -66,13 +66,12 @@ public class BtFlowParsingTest {
                             .element(0)
                             .asInstanceOf(InstanceOfAssertFactories.type(BtAssignEntry.class))
                             .satisfies( target -> assertThat(target)
-                                    .extracting("target", as(type(BtAssignResource.class)))
+                                    .extracting("target", as(type(BtReferenceResource.class)))
                                     .hasFieldOrPropertyWithValue("apiName", "var1")
-                                    .hasFieldOrPropertyWithValue("resourceType", BtEAssignResourceType.VARIABLE_CONSTANT)
                             )
                             .satisfies( source -> assertThat(source)
-                                    .extracting("source", as(type(BtAssignScalarConst.class)))
-                                    .hasFieldOrPropertyWithValue("assignType", BtEAssignType.CONSTANT)
+                                    .extracting("source", as(type(BtReferenceScalarConst.class)))
+                                    .hasFieldOrPropertyWithValue("type", BtEReferenceType.CONSTANT)
                                     .hasFieldOrPropertyWithValue("value", "10")
                             )
                         )
@@ -80,13 +79,12 @@ public class BtFlowParsingTest {
                                 .element(1)
                                 .asInstanceOf(InstanceOfAssertFactories.type(BtAssignEntry.class))
                                 .satisfies( target -> assertThat(target)
-                                        .extracting("target", as(type(BtAssignResource.class)))
+                                        .extracting("target", as(type(BtReferenceResource.class)))
                                         .hasFieldOrPropertyWithValue("apiName", "var2")
-                                        .hasFieldOrPropertyWithValue("resourceType", BtEAssignResourceType.VARIABLE_CONSTANT)
                                 )
                                 .satisfies( source -> assertThat(source)
-                                        .extracting("source", as(type(BtAssignResource.class)))
-                                        .hasFieldOrPropertyWithValue("assignType", BtEAssignType.RESOURCE)
+                                        .extracting("source", as(type(BtReferenceResource.class)))
+                                        .hasFieldOrPropertyWithValue("type", BtEReferenceType.RESOURCE)
                                         .hasFieldOrPropertyWithValue("apiName", "var3")
                                 )
                         )
@@ -94,13 +92,12 @@ public class BtFlowParsingTest {
                                 .element(2)
                                 .asInstanceOf(InstanceOfAssertFactories.type(BtAssignEntry.class))
                                 .satisfies( target -> assertThat(target)
-                                        .extracting("target", as(type(BtAssignResource.class)))
+                                        .extracting("target", as(type(BtReferenceResource.class)))
                                         .hasFieldOrPropertyWithValue("apiName", "var4")
-                                        .hasFieldOrPropertyWithValue("resourceType", BtEAssignResourceType.VARIABLE_CONSTANT)
                                 )
                                 .satisfies( source -> assertThat(source)
                                         .extracting("source", as(type(BtAssignExpression.class)))
-                                        .hasFieldOrPropertyWithValue("assignType", BtEAssignType.EXPRESSION)
+                                        .hasFieldOrPropertyWithValue("type", BtEReferenceType.EXPRESSION)
                                         .hasFieldOrPropertyWithValue("expression", "LEN(${var5})")
                                 )
                         )
@@ -124,8 +121,8 @@ public class BtFlowParsingTest {
                 .hasFieldOrPropertyWithValue("resourceType", BtEFlowResourceType.CONSTANT)
                 .hasFieldOrPropertyWithValue("dataType", BtEScalarPrimitiveType.NUMBER)
                 .satisfies( value -> assertThat(value)
-                        .extracting("value", as(type(BtAssignScalarConst.class)))
-                        .hasFieldOrPropertyWithValue("assignType", BtEAssignType.CONSTANT)
+                        .extracting("value", as(type(BtReferenceScalarConst.class)))
+                        .hasFieldOrPropertyWithValue("type", BtEReferenceType.CONSTANT)
                         .hasFieldOrPropertyWithValue("value", "2")
                 );
 

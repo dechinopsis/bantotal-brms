@@ -9,7 +9,7 @@
       "resourceType": "const",
       "dataType": "number",
       "value": {
-        "assignType": "const",
+        "type": "const",
         "value": "2"
       }
     },

@@ -1,10 +1,12 @@
 package com.dlya.btbrms.flow.schema.assign;
 
+import com.dlya.btbrms.flow.schema.reference.BtReferenceResource;
+import com.dlya.btbrms.flow.schema.reference.BtReferenceValue;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BtAssignEntry {
     @JsonProperty("target")
-    private BtAssignResource target;
+    private BtReferenceResource target;
     @JsonProperty("source")
-    private BtAssign source;
+    private BtReferenceValue source;
 }

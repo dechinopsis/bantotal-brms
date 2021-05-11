@@ -1,8 +1,8 @@
-package com.dlya.btbrms.flow.schema.assign;
+package com.dlya.btbrms.flow.schema.reference;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class BtAssignScalarConst extends BtAssign {
+public class BtReferenceScalarConst extends BtReferenceValue {
     @JsonProperty("value")
     private String value;
 }

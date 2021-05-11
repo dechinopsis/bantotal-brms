@@ -1,8 +1,8 @@
-package com.dlya.btbrms.flow.schema.enums;
+package com.dlya.btbrms.flow.schema.types;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public enum BtEAssignType {
+public enum BtEReferenceType {
     @JsonProperty("resource")
     RESOURCE,
     @JsonProperty("const")
