@@ -7,6 +7,7 @@ import com.dlya.btbrms.flow.schema.assign.BtAssignExpression;
 import com.dlya.btbrms.flow.schema.reference.BtReferenceResource;
 import com.dlya.btbrms.flow.schema.reference.BtReferenceScalarConst;
 import com.dlya.btbrms.flow.schema.step.BtFlowStepAssignment;
+import com.dlya.btbrms.flow.schema.step.BtFlowStepDecision;
 import com.dlya.btbrms.flow.schema.step.BtFlowStepStart;
 import com.dlya.btbrms.flow.schema.types.*;
 import com.dlya.btbrms.flow.schema.resouce.BtFlowResource;
@@ -36,7 +37,7 @@ public class BtFlowParsingTest {
                 .isNotNull()
                 .extracting("flowSteps", as(map(String.class, BtFlowStep.class)))
                 .isNotNull()
-                .hasSize(2)
+                .hasSize(3)
                 .hasEntrySatisfying("start", start -> assertThat(start)
                         .isNotNull()
                         .asInstanceOf(InstanceOfAssertFactories.type(BtFlowStepStart.class))
@@ -57,7 +58,7 @@ public class BtFlowParsingTest {
                         .asInstanceOf(InstanceOfAssertFactories.type(BtFlowStepAssignment.class))
                         .hasFieldOrPropertyWithValue("apiName", "assignment1")
                         .hasFieldOrPropertyWithValue("label", "Assignment 1")
-                        .hasFieldOrPropertyWithValue("next", "gxCall1")
+                        .hasFieldOrPropertyWithValue("next", "decision1")
                         .hasFieldOrPropertyWithValue("description", "Assignment Description 1")
                         .hasFieldOrPropertyWithValue("type", BtEFlowStepType.ASSIGNMENT)
                         .extracting("assignments", as(list(BtAssignEntry.class)))
@@ -103,6 +104,22 @@ public class BtFlowParsingTest {
                         )
                 );
 
+    }
+
+    @Test
+    @DisplayName("JSON flow schema, decision")
+    public void testDecisionStep() {
+        assertThat(schemaSteps)
+                .extracting("flowSteps", as(map(String.class, BtFlowStep.class)))
+                .hasEntrySatisfying("decision1", start -> assertThat(start)
+                        .isNotNull()
+                        .asInstanceOf(InstanceOfAssertFactories.type(BtFlowStepDecision.class))
+                        .hasFieldOrPropertyWithValue("defaultOutCome", "gxCall1")
+                        .hasFieldOrPropertyWithValue("apiName", "decision1")
+                        .hasFieldOrPropertyWithValue("label", "decision 1")
+                        .hasFieldOrPropertyWithValue("description", "decision Description 1")
+                        .hasFieldOrPropertyWithValue("type", BtEFlowStepType.CONDITION)
+                );
     }
 
     @Test

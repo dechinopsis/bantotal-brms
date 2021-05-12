@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BtOutcomeWResourcesEntry {
     @JsonProperty("resource")
     private BtReferenceResource resource;
-    @JsonProperty("resource")
+    @JsonProperty("operator")
     private BtOperator operator;
     @JsonProperty("value")
     private BtReferenceValue value;

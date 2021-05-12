@@ -15,8 +15,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 public abstract class BtOutcome {
     @JsonProperty("type")
     private BtEDecisionOutcomeType type;
-    @JsonProperty("outCome")
-    private String outCome;
+    @JsonProperty("outcome")
+    private String outcome;
     @JsonProperty("label")
     private String label;
     @JsonProperty("apiName")

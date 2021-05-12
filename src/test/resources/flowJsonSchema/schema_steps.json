@@ -10,7 +10,7 @@
       "label": "Assignment 1",
       "description": "Assignment Description 1",
       "type": "assignment",
-      "next": "gxCall1",
+      "next": "decision1",
       "assignments": [
         {
           "target": {
@@ -41,6 +41,113 @@
             "type": "expression",
             "expression": "LEN(${var5})"
           }
+        }
+      ]
+    },
+    "decision1": {
+      "apiName": "decision1",
+      "label": "decision 1",
+      "description": "decision Description 1",
+      "type": "condition",
+      "defaultOutCome": "gxCall1",
+      "outcomes": [
+        {
+          "type": "and",
+          "outcome": "assign2",
+          "label": "condition typed AND",
+          "apiName": "and_outcome",
+          "entries": [
+            {
+              "resource": {
+                "apiName": "var1",
+                "type": "resource"
+              },
+              "operator": "eq",
+              "value": {
+                "type": "const",
+                "value": "10"
+              }
+            },
+            {
+              "resource": {
+                "apiName": "var2",
+                "type": "resource"
+              },
+              "operator": "eq",
+              "value": {
+                "apiName": "var3",
+                "type": "resource"
+              }
+            }
+          ]
+        },
+        {
+          "type": "or",
+          "outcome": "assign3",
+          "label": "condition typed OR",
+          "apiName": "or_outcome",
+          "entries": [
+            {
+              "resource": {
+                "apiName": "var1",
+                "type": "resource"
+              },
+              "operator": "gt",
+              "value": {
+                "type": "const",
+                "value": "250"
+              }
+            },
+            {
+              "resource": {
+                "apiName": "var2",
+                "type": "resource"
+              },
+              "operator": "contains",
+              "value": {
+                "type": "const",
+                "value": "STR_KEY"
+              }
+            }
+          ]
+        },
+        {
+          "type": "custom",
+          "outcome": "assign4",
+          "label": "condition typed Custom",
+          "apiName": "custom_outcome",
+          "entries": [
+            {
+              "resource": {
+                "apiName": "var5",
+                "type": "resource"
+              },
+              "operator": "starts",
+              "value": {
+                "type": "const",
+                "value": "STR_KEY"
+              }
+            },
+            {
+              "resource": {
+                "apiName": "var2",
+                "type": "resource"
+              },
+              "operator": "eq",
+              "value": {
+                "apiName": "var3",
+                "type": "resource"
+              }
+            }
+          ],
+          "customCondition": "1 OR 2"
+        },
+        {
+          "type": "expression",
+          "outcome": "gxCall2",
+          "label": "condition typed expression",
+          "apiName": "exp_outcome",
+          "expression": "OR(AND(EQUALS(v1,v2),EQUALS(v2,v3)),CONTAINS(v4,'_'))"
         }
       ]
     }
