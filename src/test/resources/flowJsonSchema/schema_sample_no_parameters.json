@@ -1,0 +1,319 @@
+{
+  "flowSteps": {
+    "start": {
+      "apiName": "start",
+      "type": "start",
+      "startAt": "initialize"
+    },
+    "initialize": {
+      "apiName": "initialize",
+      "label": "initialize",
+      "description": "Assignment of variables a and b",
+      "type": "assignment",
+      "next": "decision1",
+      "assignments": [
+        {
+          "target": {
+            "apiName": "a",
+            "type": "resource"
+          },
+          "source": {
+            "type": "const",
+            "value": "2"
+          }
+        },
+        {
+          "target": {
+            "apiName": "b",
+            "type": "resource"
+          },
+          "source": {
+            "type": "const",
+            "value": "1"
+          }
+        }
+      ]
+    },
+    "decision1": {
+      "apiName": "decision1",
+      "label": "decision 1",
+      "description": "resolves text for variable a",
+      "type": "condition",
+      "defaultOutCome": null,
+      "outcomes": [
+        {
+          "type": "and",
+          "outcome": "assign_one",
+          "label": "is one?",
+          "apiName": "and_outcome",
+          "entries": [
+            {
+              "resource": {
+                "apiName": "a",
+                "type": "resource"
+              },
+              "operator": "eq",
+              "value": {
+                "type": "const",
+                "value": "1"
+              }
+            }
+          ]
+        },
+        {
+          "type": "and",
+          "outcome": "assign_two",
+          "label": "is two?",
+          "apiName": "and_outcome",
+          "entries": [
+            {
+              "resource": {
+                "apiName": "a",
+                "type": "resource"
+              },
+              "operator": "eq",
+              "value": {
+                "type": "const",
+                "value": "2"
+              }
+            }
+          ]
+        },
+        {
+          "type": "and",
+          "outcome": "assign_three",
+          "label": "is three??",
+          "apiName": "and_outcome",
+          "entries": [
+            {
+              "resource": {
+                "apiName": "a",
+                "type": "resource"
+              },
+              "operator": "eq",
+              "value": {
+                "type": "const",
+                "value": "3"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "assign_one": {
+      "apiName": "assign_one",
+      "label": "assign one",
+      "description": "Assignment text",
+      "type": "assignment",
+      "next": null,
+      "assignments": [
+        {
+          "target": {
+            "apiName": "text",
+            "type": "resource"
+          },
+          "source": {
+            "type": "const",
+            "value": "one"
+          }
+        }
+      ]
+    },
+    "assign_two": {
+      "apiName": "assign_two",
+      "label": "assign two",
+      "description": "Assignment text",
+      "type": "assignment",
+      "next": "decision2",
+      "assignments": [
+        {
+          "target": {
+            "apiName": "text",
+            "type": "resource"
+          },
+          "source": {
+            "type": "const",
+            "value": "two"
+          }
+        }
+      ]
+    },
+    "assign_three": {
+      "apiName": "assign_three",
+      "label": "assign three",
+      "description": "Assignment text",
+      "type": "assignment",
+      "next": null,
+      "assignments": [
+        {
+          "target": {
+            "apiName": "text",
+            "type": "resource"
+          },
+          "source": {
+            "type": "const",
+            "value": "three"
+          }
+        }
+      ]
+    },
+    "decision2": {
+      "apiName": "decision2",
+      "label": "decision 2",
+      "description": "resolves text for variable b",
+      "type": "condition",
+      "defaultOutCome": "assign_twenty",
+      "outcomes": [
+        {
+          "type": "and",
+          "outcome": "assign_twenty_one",
+          "label": "is one?",
+          "apiName": "and_outcome",
+          "entries": [
+            {
+              "resource": {
+                "apiName": "b",
+                "type": "resource"
+              },
+              "operator": "eq",
+              "value": {
+                "type": "const",
+                "value": "1"
+              }
+            }
+          ]
+        },
+        {
+          "type": "and",
+          "outcome": "assign_twenty_two",
+          "label": "is two?",
+          "apiName": "and_outcome",
+          "entries": [
+            {
+              "resource": {
+                "apiName": "b",
+                "type": "resource"
+              },
+              "operator": "eq",
+              "value": {
+                "type": "const",
+                "value": "2"
+              }
+            }
+          ]
+        },
+        {
+          "type": "and",
+          "outcome": "assign_three",
+          "label": "is three??",
+          "apiName": "and_outcome",
+          "entries": [
+            {
+              "resource": {
+                "apiName": "a",
+                "type": "resource"
+              },
+              "operator": "eq",
+              "value": {
+                "type": "const",
+                "value": "3"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "assign_twenty_one": {
+      "apiName": "assign_twenty_one",
+      "label": "assign twenty one",
+      "description": "Assignment text",
+      "type": "assignment",
+      "next": null,
+      "assignments": [
+        {
+          "target": {
+            "apiName": "text",
+            "type": "resource"
+          },
+          "source": {
+            "type": "const",
+            "value": "twenty one"
+          }
+        }
+      ]
+    },
+    "assign_twenty_two": {
+      "apiName": "assign_twenty_two",
+      "label": "assign twenty two",
+      "description": "Assignment text",
+      "type": "assignment",
+      "next": null,
+      "assignments": [
+        {
+          "target": {
+            "apiName": "text",
+            "type": "resource"
+          },
+          "source": {
+            "type": "const",
+            "value": "twenty two"
+          }
+        }
+      ]
+    },
+    "assign_twenty": {
+      "apiName": "assign_twenty",
+      "label": "assign twenty",
+      "description": "Assignment text",
+      "type": "assignment",
+      "next": null,
+      "assignments": [
+        {
+          "target": {
+            "apiName": "text",
+            "type": "resource"
+          },
+          "source": {
+            "type": "const",
+            "value": "twenty"
+          }
+        }
+      ]
+    }
+  },
+  "flowResources": [
+    {
+      "apiName": "a",
+      "label": "variable a",
+      "description": "it stores a number",
+      "resourceType": "var",
+      "dataType": "number",
+      "isCollection": false,
+      "in": false,
+      "out": true,
+      "hasDefault": false
+    },
+    {
+      "apiName": "b",
+      "label": "variable b",
+      "description": "it stores a number",
+      "resourceType": "var",
+      "dataType": "number",
+      "isCollection": false,
+      "in": false,
+      "out": true,
+      "hasDefault": false
+    },
+    {
+      "apiName": "text",
+      "label": "variable text",
+      "description": "it stores a text",
+      "resourceType": "var",
+      "dataType": "text",
+      "isCollection": false,
+      "in": false,
+      "out": true,
+      "hasDefault": false
+    }
+  ]
+}
