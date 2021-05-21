@@ -44,7 +44,7 @@
         {
           "type": "and",
           "outcome": "assign_one",
-          "label": "is one?",
+          "label": "is a one?",
           "apiName": "and_outcome",
           "entries": [
             {
@@ -63,7 +63,7 @@
         {
           "type": "and",
           "outcome": "assign_two",
-          "label": "is two?",
+          "label": "is a two?",
           "apiName": "and_outcome",
           "entries": [
             {
@@ -82,7 +82,7 @@
         {
           "type": "and",
           "outcome": "assign_three",
-          "label": "is three??",
+          "label": "is a three??",
           "apiName": "and_outcome",
           "entries": [
             {
@@ -167,7 +167,7 @@
         {
           "type": "and",
           "outcome": "assign_twenty_one",
-          "label": "is one?",
+          "label": "is b one?",
           "apiName": "and_outcome",
           "entries": [
             {
@@ -186,7 +186,7 @@
         {
           "type": "and",
           "outcome": "assign_twenty_two",
-          "label": "is two?",
+          "label": "is b two?",
           "apiName": "and_outcome",
           "entries": [
             {
@@ -198,25 +198,6 @@
               "value": {
                 "type": "const",
                 "value": "2"
-              }
-            }
-          ]
-        },
-        {
-          "type": "and",
-          "outcome": "assign_three",
-          "label": "is three??",
-          "apiName": "and_outcome",
-          "entries": [
-            {
-              "resource": {
-                "apiName": "a",
-                "type": "resource"
-              },
-              "operator": "eq",
-              "value": {
-                "type": "const",
-                "value": "3"
               }
             }
           ]
@@ -281,30 +262,30 @@
       ]
     }
   },
-  "flowResources": [
-    {
+  "flowResources": {
+    "a": {
       "apiName": "a",
       "label": "variable a",
-      "description": "it stores a number",
+      "description": "it stores a text",
       "resourceType": "var",
-      "dataType": "number",
+      "dataType": "text",
       "isCollection": false,
       "in": false,
       "out": true,
       "hasDefault": false
     },
-    {
+    "b": {
       "apiName": "b",
       "label": "variable b",
-      "description": "it stores a number",
+      "description": "it stores a text",
       "resourceType": "var",
-      "dataType": "number",
+      "dataType": "text",
       "isCollection": false,
       "in": false,
       "out": true,
       "hasDefault": false
     },
-    {
+    "text": {
       "apiName": "text",
       "label": "variable text",
       "description": "it stores a text",
@@ -315,5 +296,5 @@
       "out": true,
       "hasDefault": false
     }
-  ]
+  }
 }

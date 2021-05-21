@@ -12,4 +12,20 @@ public class BtFlowResourceVariableScalar extends BtFlowResourceVariable {
     private Boolean hasDefault;
     @JsonProperty("defaultValue")
     private BtReferenceValue value;
+
+    public Boolean isIn() {
+        return this.in;
+    }
+
+    public Boolean isOut() {
+        return this.out;
+    }
+
+    public Boolean hasDefault() {
+        return this.hasDefault;
+    }
+
+    public BtReferenceValue getValue() {
+        return this.value;
+    }
 }

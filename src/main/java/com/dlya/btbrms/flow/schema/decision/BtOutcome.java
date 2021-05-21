@@ -21,4 +21,20 @@ public abstract class BtOutcome {
     private String label;
     @JsonProperty("apiName")
     private String apiName;
+
+    public BtEDecisionOutcomeType getType() {
+        return type;
+    }
+
+    public String getOutcome() {
+        return outcome;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public String getApiName() {
+        return apiName;
+    }
 }

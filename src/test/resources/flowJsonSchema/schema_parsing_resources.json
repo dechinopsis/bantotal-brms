@@ -1,8 +1,8 @@
 {
   "flowSteps": {
   },
-  "flowResources": [
-    {
+  "flowResources": {
+    "two": {
       "apiName": "two",
       "label": "Two",
       "description": "Two 2",
@@ -13,7 +13,7 @@
         "value": "2"
       }
     },
-    {
+    "var1": {
       "apiName": "var1",
       "label": "variable1",
       "description": "Description of variable",
@@ -24,5 +24,6 @@
       "out": true,
       "hasDefault": false
     }
-  ]
+  }
 }
+

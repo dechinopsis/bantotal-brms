@@ -16,4 +16,12 @@ public abstract class BtFlowStep {
     private String apiName;
     @JsonProperty("type")
     private BtEFlowStepType type;
+
+    public String getApiName() {
+        return this.apiName;
+    }
+
+    public BtEFlowStepType getType() {
+        return this.type;
+    }
 }

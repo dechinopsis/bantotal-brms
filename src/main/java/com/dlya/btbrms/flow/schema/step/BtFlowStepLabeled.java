@@ -7,4 +7,12 @@ public abstract class BtFlowStepLabeled extends BtFlowStep {
     private String label;
     @JsonProperty("description")
     private String description;
+
+    public String getLabel() {
+        return this.label;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
 }

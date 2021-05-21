@@ -1,8 +1,8 @@
-package com.dlya.btbrms.flow.schema.decision;
+package com.dlya.btbrms.flow.schema.types;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public enum BtOperator {
+public enum BtECondOperator {
     //Generic
     @JsonProperty("eq")
     EQUALS,

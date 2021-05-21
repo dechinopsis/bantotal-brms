@@ -1,14 +1,9 @@
 package com.dlya.btbrms.flow.converter;
 
-import com.adelean.inject.resources.junit.jupiter.GivenJsonResource;
 import com.adelean.inject.resources.junit.jupiter.GivenTextResource;
 import com.adelean.inject.resources.junit.jupiter.TestWithResources;
-import com.dlya.btbrms.flow.schema.BtFlowDefinition;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,13 +13,14 @@ public class BtScriptConverterTest {
     String schemaSampleText;
 
     @Test
-    @DisplayName("Convert JSON to script")
-    public void convertJSONToScript() throws IOException {
-        BtScriptConverter converter = new BtScriptConverter.Builder()
+    @DisplayName("Convert JSON to .drl")
+    public void convertJSONToDrl() throws Exception {
+        BtScriptConverter converter = new BtConverterBuilder()
                 .flowSchemaJson(schemaSampleText)
-                .language(BtScriptLanguage.JAVASCRIPT)
+                .language(BtEScriptLanguage.DROOLS)
                 .build();
 
-        assertThat(converter).isNotNull();
+        String script = converter.generate();
+        assertThat(script).isNotNull();
     }
 }

@@ -15,4 +15,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 public abstract class BtReferenceValue {
     @JsonProperty("type")
     private BtEReferenceType type;
+
+    public BtEReferenceType getType() {
+        return type;
+    }
 }

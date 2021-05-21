@@ -8,4 +8,12 @@ public class BtFlowResourceVariable extends BtFlowResource {
     private BtEScalarPrimitiveType dataType;
     @JsonProperty("isCollection")
     private Boolean isCollection;
+
+    public BtEScalarPrimitiveType getDataType() {
+        return this.dataType;
+    }
+
+    public Boolean isCollection() {
+        return this.isCollection;
+    }
 }

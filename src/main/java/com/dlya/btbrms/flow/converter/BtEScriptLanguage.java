@@ -1,6 +1,7 @@
 package com.dlya.btbrms.flow.converter;
 
-public enum BtScriptLanguage {
+public enum BtEScriptLanguage {
     JAVASCRIPT,
+    DROOLS,
     GROOVY
 }

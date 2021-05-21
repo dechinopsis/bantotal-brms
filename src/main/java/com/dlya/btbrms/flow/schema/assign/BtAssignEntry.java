@@ -9,4 +9,12 @@ public class BtAssignEntry {
     private BtReferenceResource target;
     @JsonProperty("source")
     private BtReferenceValue source;
+
+    public BtReferenceResource getTarget() {
+        return target;
+    }
+
+    public BtReferenceValue getSource() {
+        return source;
+    }
 }

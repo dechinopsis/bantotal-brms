@@ -5,4 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BtOutcomeExpression extends BtOutcome {
     @JsonProperty("expression")
     private String expression;
+
+    public String getExpression() {
+        return this.expression;
+    }
 }

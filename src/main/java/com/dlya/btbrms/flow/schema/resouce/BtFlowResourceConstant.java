@@ -9,4 +9,12 @@ public class BtFlowResourceConstant extends BtFlowResource {
     private BtEScalarPrimitiveType dataType;
     @JsonProperty("value")
     private BtReferenceScalarConst value;
+
+    public BtEScalarPrimitiveType getDataType() {
+        return this.dataType;
+    }
+
+    public BtReferenceScalarConst getValue() {
+        return this.value;
+    }
 }

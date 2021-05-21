@@ -21,4 +21,20 @@ public abstract class BtFlowResource {
     private String description;
     @JsonProperty("resourceType")
     private BtEFlowResourceType resourceType;
+
+    public String getApiName() {
+        return this.apiName;
+    }
+
+    public String getLabel() {
+        return this.label;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public BtEFlowResourceType getResourceType() {
+        return this.resourceType;
+    }
 }

@@ -7,4 +7,8 @@ import java.util.List;
 public class BtOutcomeWResources extends BtOutcome {
     @JsonProperty("entries")
     private List<BtOutcomeWResourcesEntry> entries;
+
+    public List<BtOutcomeWResourcesEntry> getEntries() {
+        return entries;
+    }
 }

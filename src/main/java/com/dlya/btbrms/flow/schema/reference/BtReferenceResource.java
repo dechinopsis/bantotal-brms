@@ -5,4 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BtReferenceResource extends BtReferenceValue {
     @JsonProperty("apiName")
     private String apiName;
+
+    public String getApiName() {
+        return apiName;
+    }
 }

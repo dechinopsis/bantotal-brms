@@ -7,4 +7,12 @@ public class BtFlowResourceRecord extends BtFlowResource {
     private String table;
     @JsonProperty("isCollection")
     private Boolean collection;
+
+    public String getTable() {
+        return this.table;
+    }
+
+    public Boolean isCollection() {
+        return this.collection;
+    }
 }
