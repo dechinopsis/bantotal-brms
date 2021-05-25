@@ -1,0 +1,22 @@
+package com.dlya.btbrms.exec.drools;
+
+import com.dlya.btbrms.exec.drools.BtResourceMap;
+
+rule "Consumo Tasa especial emprendedor"
+	dialect "mvel"
+	when
+        $resources : BtResourceMap(res["scmod"].val == 108 ,
+         res["sctope"].val  == 2, res["aoimp"].val  <= 500)
+	then
+	    $resources.getRes().get("result").setVal("EMP");
+end
+
+rule "Consumo Tasa especial micro empresa"
+	dialect "mvel"
+	when
+        $resources : BtResourceMap(res["scmod"].val  == 108 ,
+         res["sctope"].val  == 1, res["aoimp"].val  > 500 ,
+          res["aoimp"].val  <= 1000)
+	then
+	    $resources.getRes().get("result").setVal("MICRO");
+end
