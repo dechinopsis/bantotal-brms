@@ -1,22 +1,59 @@
-package com.dlya.btbrms.exec.drools;
+package com.dlya.btbrms.api.drools;
 
-import com.dlya.btbrms.exec.drools.BtResourceMap;
+import com.dlya.btbrms.api.drools.BtResourceSet;
+import com.dlya.btbrms.api.drools.BtEResourceSetStatus;
 
 rule "Consumo Tasa especial emprendedor"
+    salience 3
 	dialect "mvel"
 	when
-        $resources : BtResourceMap(res["scmod"].val == 108 ,
-         res["sctope"].val  == 2, res["aoimp"].val  <= 500)
+        $resSet : BtResourceSet(
+            status == BtEResourceSetStatus.INIT && (
+                resource["scmod"].value == 108 &&
+                resource["sctope"].value  == 2 &&
+                resource["aoimp"].value  <= 500
+            )
+        )
 	then
-	    $resources.getRes().get("result").setVal("EMP");
+	   $resSet.get("result").setValue("EMP");
+	   modify($resSet){
+	        setStatus(BtEResourceSetStatus.PROCESSED)
+	   }
 end
 
 rule "Consumo Tasa especial micro empresa"
+    salience 2
 	dialect "mvel"
 	when
-        $resources : BtResourceMap(res["scmod"].val  == 108 ,
-         res["sctope"].val  == 1, res["aoimp"].val  > 500 ,
-          res["aoimp"].val  <= 1000)
+        $resSet : BtResourceSet(
+            status == BtEResourceSetStatus.INIT && (
+                resource["scmod"].value  == 108 &&
+                resource["sctope"].value  == 1 &&
+                resource["aoimp"].value  > 500 &&
+                resource["aoimp"].value  <= 1000
+            )
+        )
 	then
-	    $resources.getRes().get("result").setVal("MICRO");
+	    $resSet.get("result").setValue("MICRO");
+        modify($resSet){
+            setStatus(BtEResourceSetStatus.PROCESSED)
+        }
 end
+
+rule "Consumo Tasa especial micro empresa sin importe"
+    salience 1
+	dialect "mvel"
+	when
+        $resSet : BtResourceSet(
+            status == BtEResourceSetStatus.INIT && (
+                resource["scmod"].value  == 108 &&
+                resource["sctope"].value  == 1
+            )
+        )
+	then
+	    $resSet.get("result").setValue("MICRO_NO_IMP");
+	    modify($resSet){
+	        setStatus(BtEResourceSetStatus.PROCESSED)
+	    }
+end
+
